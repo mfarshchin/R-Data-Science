@@ -1,0 +1,3 @@
+"0","tab<-left_join(murders,results_us_election_2016,by='state')%>%"
+"0","  select(-others)%>%rename(ev='electoral_votes')"
+"0","head(tab)"

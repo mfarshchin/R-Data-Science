@@ -1,0 +1,148 @@
+---
+title: "Join"
+author: "M Farhchin"
+date: "3/31/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+Combinig data from different tables
+murder data 
+
+```{r}
+library(tidyverse)
+library(dslabs)
+data(murders)
+head(murders)
+```
+
+electoral vote data
+```{r}
+data(polls_us_election_2016)
+head(results_us_election_2016)
+```
+
+
+
+Note that order of data is not the same in these tables so:
+```{r}
+identical(results_us_election_2016$state, murders$state)
+```
+
+Use left_join (we will remove the others column and rename electoral votes so that the tables fit on the page):
+
+```{r}
+tab<-left_join(murders,results_us_election_2016,by='state')%>%
+  select(-others)%>%rename(ev='electoral_votes')
+head(tab)
+```
+
+Plot the results
+```{r}
+library(ggrepel)
+tab %>% ggplot(aes(population/10^6, ev, label = abb)) +
+  geom_point() +
+  geom_text_repel() + 
+  scale_x_continuous(trans = "log2") +
+  scale_y_continuous(trans = "log2") +
+  geom_smooth(method = "lm", se = FALSE)
+```
+ Create a subst of from each data set
+ 
+```{r}
+# create tab1 object, which is a subset of murders data set
+tab1<-slice(murders,1:6)%>%select(state, population)
+tab1# create tab2 object which is a subset of eloctoral votes data set
+tab2<-slice(results_us_election_2016,c(1:3,5,7:8))%>%
+  select(state,electoral_votes)
+tab2
+
+
+```
+
+Use left joint to join these tables but with different orders
+```{r}
+left_join(tab1,tab2)
+```
+Use left joint but with different order
+```{r}
+left_join(tab2,tab1)
+```
+Use pipe with left join
+```{r}
+tab1%>%left_join(tab2)
+```
+Use inner_join to join the table for the rows that are available in both tables
+```{r}
+inner_join(tab1,tab2)
+```
+Use full_join
+```{r}
+full_join(tab1,tab2)
+```
+Join all elements in tab1 that exist in tab2
+```{r}
+semi_join(tab1,tab2)
+```
+Use anti_join to get the elementa that do not exist in tab1 but exist in tab2
+```{r}
+anti_join(tab1,tab2)
+```
+Use bind_cols
+```{r}
+# break tab data intor different columns
+tab1<-tab[,1:3] #first 3 columns of tab
+tab2<-tab[,4:6] # cols 4 to 6 of tab
+tab3<-tab[,7:8] # cols 7 to 9 of tab
+# now use bind_cols to combine data
+new_tab<-bind_cols(tab1,tab2,tab3)
+new_tab
+```
+
+Use bind_rows
+```{r}
+tab1<-tab[1:3,]
+tab2<-tab[4:6,]
+bind_rows(tab1,tab2)
+```
+Set operators
+```{r}
+# apply intersect on vectors
+intersect(c(1:5),c(3:10))
+```
+```{r}
+# apply intersect on data frames
+r1<-tab[1:5,]
+r2<-tab[3:9,]
+intersect(r1,r2)
+```
+```{r}
+# apply union on vectors
+union(c('a','b','c','c','c','d'),c('a','c','e'))
+```
+
+```{r}
+# apply union to data frames
+union(r1,r2)
+```
+
+```{r}
+# apply setdiff on vectors
+print(setdiff(1:10,5:20))
+print(setdiff(5:20,1:10))
+```
+
+```{r}
+# apply setdiff to data frames
+print(setdiff(r1,r2))
+print(setdiff(r2,r1))
+```
+```{r}
+setequal(r1,r2)
+```
+

@@ -1,0 +1,7 @@
+"0","library(ggrepel)"
+"0","tab %>% ggplot(aes(population/10^6, ev, label = abb)) +"
+"0","  geom_point() +"
+"0","  geom_text_repel() + "
+"0","  scale_x_continuous(trans = ""log2"") +"
+"0","  scale_y_continuous(trans = ""log2"") +"
+"0","  geom_smooth(method = ""lm"", se = FALSE)"

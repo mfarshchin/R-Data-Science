@@ -1,0 +1,6 @@
+library(dslabs)
+data("Titanic")
+head(Titanic)
+Titanic
+
+

@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586313212802.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "84FEDDE7",
+    "lastKnownWriteTime" : 1586316958,
+    "last_content_update" : 1586316958797,
+    "path" : "~/Google Drive/DataScienceEdx/Data Wrangling/StringProcessing.Rmd",
+    "project_path" : "StringProcessing.Rmd",
+    "properties" : {
+        "cursorPosition" : "98,36",
+        "last_setup_crc32" : "",
+        "scrollLine" : "80",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

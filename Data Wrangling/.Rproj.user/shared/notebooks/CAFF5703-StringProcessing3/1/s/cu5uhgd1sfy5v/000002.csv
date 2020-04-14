@@ -1,0 +1,2 @@
+"0","# separate fails because it leaves in extra characters, but extract keeps only the digits because of regex groups"
+"0","tab %>% separate(x, c(""feet"",""inches""), sep = ""'"", fill = ""right"")"

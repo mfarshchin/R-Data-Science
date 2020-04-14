@@ -1,0 +1,9 @@
+"0","# the simplify argument makes str_split return a matrix instead of a list"
+"0","x <- str_split(lines, "","", simplify = TRUE) "
+"0","col_names <- x[1,]"
+"0","x <- x[-1,]"
+"0","x %>% as_data_frame() %>%"
+"0","  setNames(col_names) %>%"
+"0","  mutate_all(parse_guess)"
+"2","`as_data_frame()` is deprecated, use `as_tibble()` (but mind the new semantics).
+[90mThis warning is displayed once per session.[39m"

@@ -1,0 +1,8 @@
+"0","# load raw heights data and inspect"
+"0","library(dslabs)"
+"0","data(reported_heights)"
+"0","class(reported_heights$height)"
+"1","[1]"
+"1"," ""character"""
+"1","
+"

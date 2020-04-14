@@ -1,0 +1,2 @@
+"0","# the separate and extract functions behave similarly"
+"0","tab %>% separate(x, c(""feet"", ""inches""), sep = ""'"")"

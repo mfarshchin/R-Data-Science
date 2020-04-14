@@ -1,0 +1,7 @@
+"0","new_murders<-murders_raw%>%mutate_at(2:3,parse_number)"
+"0","class(new_murders$population)"
+"1","[1]"
+"1"," ""numeric"""
+"1","
+"
+"0","new_murders"

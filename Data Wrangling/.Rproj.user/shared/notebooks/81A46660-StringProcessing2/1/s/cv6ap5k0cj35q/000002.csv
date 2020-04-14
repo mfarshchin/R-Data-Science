@@ -1,0 +1,2 @@
+"0","# inspect examples of entries with problems"
+"0","problems[c(2, 10, 11, 12, 15)] %>% str_view(pattern)"

@@ -1,0 +1,6 @@
+"0","# highlight the first occurrence of a pattern"
+"0","str_view(s, pattern)"
+"2","Registered S3 method overwritten by 'htmlwidgets':
+  method           from         
+  print.htmlwidget tools:rstudio
+"

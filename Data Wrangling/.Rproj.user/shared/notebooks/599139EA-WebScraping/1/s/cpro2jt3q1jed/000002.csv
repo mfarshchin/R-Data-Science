@@ -1,0 +1,6 @@
+"0","tab <- tab %>% html_table"
+"0","class(tab)"
+"1","[1]"
+"1"," ""data.frame"""
+"1","
+"

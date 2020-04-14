@@ -1,0 +1,4 @@
+library(dslabs)
+data("Titanic")
+# lets look at the data
+Titanic

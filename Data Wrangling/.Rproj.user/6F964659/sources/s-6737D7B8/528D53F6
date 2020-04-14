@@ -1,0 +1,27 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1586400510859.000,
+    "dirty" : true,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "528D53F6",
+    "lastKnownWriteTime" : 1586400532,
+    "last_content_update" : 1586400783527,
+    "path" : "~/Google Drive/DataScienceEdx/Data Wrangling/DatesTimes.Rmd",
+    "project_path" : "DatesTimes.Rmd",
+    "properties" : {
+        "cursorPosition" : "69,0",
+        "last_setup_crc32" : "6737D7B8bb338d19",
+        "scrollLine" : "55",
+        "tempName" : "Untitled1"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

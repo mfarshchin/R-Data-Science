@@ -1,0 +1,170 @@
+---
+title: "String processing"
+author: "M Farhchin"
+date: "4/7/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Detect pattern in a string
+```{r}
+# load stringr through tidyverse
+library(tidyverse)
+murders_raw$total
+# detect whether a comma is present
+pattern <- ","
+str_detect(murders_raw$total, pattern) 
+```
+
+```{r}
+# show the subset of strings including "cm"
+str_subset(reported_heights$height, "cm")
+```
+```{r}
+# use the "or" symbol inside a regex (|)
+yes <- c("180 cm", "70 inches")
+no <- c("180", "70''")
+s <- c(yes, no)
+str_detect(s, "cm") | str_detect(s, "inches")
+str_detect(s, "cm|inches")
+```
+```{r}
+
+```
+```{r}
+# [56] means 5 or 6
+str_view(s, "[56]")
+```
+```{r}
+# [4-7] means 4, 5, 6 or 7
+yes <- as.character(4:7)
+no <- as.character(1:3)
+s <- c(yes, no)
+str_detect(s, "[4-7]")
+str_view(s, "[4-7]")
+```
+
+```{r}
+# ^ means start of string, $ means end of string
+pattern <- "^\\d$"
+yes <- c("1", "5", "9")
+no <- c("12", "123", " 1", "a4", "b")
+s <- c(yes, no)
+str_view(s, pattern)
+
+```
+
+```{r}
+# curly braces define quantifiers: 1 or 2 digits 
+pattern <- "^\\d{1,2}$"
+yes <- c("1", "5", "9", "12")
+no <- c("123", "a4", "b")
+str_view(c(yes, no), pattern)
+
+```
+
+```{r}
+# combining character class, anchors and quantifier
+pattern <- "^[4-7]'\\d{1,2}\"$"
+yes <- c("5'7\"", "6'2\"",  "5'12\"")
+no <- c("6,2\"", "6.2\"","I am 5'11\"", "3'2\"", "64")
+str_detect(yes, pattern)
+str_detect(no, pattern)
+```
+
+```{r}
+# number of entries matching our desired pattern
+pattern <- "^[4-7]'\\d{1,2}\"$"
+sum(str_detect(problems, pattern))
+
+```
+```{r}
+# inspect examples of entries with problems
+problems[c(2, 10, 11, 12, 15)] %>% str_view(pattern)
+str_subset(problems, "inches")
+str_subset(problems, "''")
+```
+```{r}
+# replace or remove feet/inches words before matching
+pattern <- "^[4-7]'\\d{1,2}$"
+problems %>% 
+  str_replace("feet|ft|foot", "'") %>% # replace feet, ft, foot with ' 
+  str_replace("inches|in|''|\"", "") %>% # remove all inches symbols
+  str_detect(pattern) %>% 
+  sum()
+
+```
+```{r}
+# R does not ignore whitespace
+identical("Hi", "Hi ")
+
+# \\s represents whitespace
+pattern_2 <- "^[4-7]'\\s\\d{1,2}\"$"
+str_subset(problems, pattern_2)
+```
+
+```{r}
+# * means 0 or more instances of a character
+yes <- c("AB", "A1B", "A11B", "A111B", "A1111B")
+no <- c("A2B", "A21B")
+str_detect(yes, "A1*B")
+str_detect(no, "A1*B")
+
+```
+```{r}
+# test how *, ? and + differ
+data.frame(string = c("AB", "A1B", "A11B", "A111B", "A1111B"),
+           none_or_more = str_detect(yes, "A1*B"),
+           nore_or_once = str_detect(yes, "A1?B"),
+           once_or_more = str_detect(yes, "A1+B"))
+           
+# update pattern by adding optional spaces before and after feet symbol
+pattern <- "^[4-7]\\s*'\\s*\\d{1,2}$"
+problems %>% 
+  str_replace("feet|ft|foot", "'") %>% # replace feet, ft, foot with ' 
+  str_replace("inches|in|''|\"", "") %>% # remove all inches symbols
+  str_detect(pattern) %>% 
+  sum()
+```
+```{r}
+# define regex with and without groups
+pattern_without_groups <- "^[4-7],\\d*$"
+pattern_with_groups <-  "^([4-7]),(\\d*)$"
+# create examples
+yes <- c("5,9", "5,11", "6,", "6,1")
+no <- c("5'9", ",", "2,8", "6.1.1")
+s <- c(yes, no)
+
+# demonstrate the effect of groups
+str_detect(s, pattern_without_groups)
+str_detect(s, pattern_with_groups)
+```
+```{r}
+# demonstrate difference between str_match and str_extract
+str_match(s, pattern_with_groups)
+str_extract(s, pattern_with_groups)
+
+```
+```{r}
+# improve the pattern to recognize more events
+pattern_with_groups <-  "^([4-7]),(\\d*)$"
+yes <- c("5,9", "5,11", "6,", "6,1")
+no <- c("5'9", ",", "2,8", "6.1.1")
+s <- c(yes, no)
+str_replace(s, pattern_with_groups, "\\1'\\2")
+
+```
+
+```{r}
+# final pattern
+pattern_with_groups <-"^([4-7])\\s*[,\\.\\s+]\\s*(\\d*)$"
+
+# combine stringr commands with the pipe
+str_subset(problems, pattern_with_groups) %>% head
+str_subset(problems, pattern_with_groups) %>% 
+  str_replace(pattern_with_groups, "\\1'\\2") %>% head
+```
+

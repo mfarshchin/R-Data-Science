@@ -1,0 +1,4 @@
+"0","# second example - some heights with unusual formats"
+"0","s <- c(""5'10"", ""6'1\"""",""5'8inches"")"
+"0","tab <- data.frame(x = s)"
+"0","tab"

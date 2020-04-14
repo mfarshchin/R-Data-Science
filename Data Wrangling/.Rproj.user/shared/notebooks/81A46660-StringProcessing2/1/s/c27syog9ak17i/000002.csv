@@ -1,0 +1,6 @@
+"0","# ^ means start of string, $ means end of string"
+"0","pattern <- ""^\\d$"""
+"0","yes <- c(""1"", ""5"", ""9"")"
+"0","no <- c(""12"", ""123"", "" 1"", ""a4"", ""b"")"
+"0","s <- c(yes, no)"
+"0","str_view(s, pattern)"

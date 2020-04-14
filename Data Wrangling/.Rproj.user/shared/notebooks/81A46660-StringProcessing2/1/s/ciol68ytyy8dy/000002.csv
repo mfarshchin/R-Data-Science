@@ -1,0 +1,7 @@
+"0","# show the subset of strings including ""cm"""
+"0","str_subset(reported_heights$height, ""cm"")"
+"1","[1]"
+"1"," ""165cm"" "
+"1"," ""170 cm"""
+"1","
+"

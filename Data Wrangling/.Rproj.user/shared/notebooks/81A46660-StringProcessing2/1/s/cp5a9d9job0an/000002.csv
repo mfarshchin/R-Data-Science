@@ -1,0 +1,7 @@
+"0","# number of entries matching our desired pattern"
+"0","pattern <- ""^[4-7]'\\d{1,2}\""$"""
+"0","sum(str_detect(problems, pattern))"
+"1","[1]"
+"1"," 14"
+"1","
+"

@@ -1,0 +1,3 @@
+"0","tab2<-slice(results_us_election_2016,c(1:3,5,7:8))%>%"
+"0","  select(state,electoral_votes)"
+"0","tab2"

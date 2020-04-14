@@ -1,0 +1,4 @@
+"0","# apply intersect on data frames"
+"0","r1<-tab[1:5,]"
+"0","r2<-tab[3:9,]"
+"0","intersect(r1,r2)"

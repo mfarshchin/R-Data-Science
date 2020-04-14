@@ -1,0 +1,7 @@
+"0","get_recipe <- function(url){"
+"0","    h <- read_html(url)"
+"0","    recipe <- h %>% html_node("".o-AssetTitle__a-HeadlineText"") %>% html_text()"
+"0","    prep_time <- h %>% html_node("".m-RecipeInfo__a-Description--Total"") %>% html_text()"
+"0","    ingredients <- h %>% html_nodes("".o-Ingredients__a-Ingredient"") %>% html_text()"
+"0","    return(list(recipe = recipe, prep_time = prep_time, ingredients = ingredients))"
+"0","} "

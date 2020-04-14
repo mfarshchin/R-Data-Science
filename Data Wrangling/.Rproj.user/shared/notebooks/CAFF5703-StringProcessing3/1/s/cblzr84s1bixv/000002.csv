@@ -1,0 +1,7 @@
+"0","# more efficient code for the same thing"
+"0","dat <- x %>%"
+"0","  transpose() %>%"
+"0","  map( ~ parse_guess(unlist(.))) %>%"
+"0","  setNames(col_names) %>% "
+"0","  as.data.frame() "
+"0","dat"
